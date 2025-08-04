@@ -1,0 +1,76 @@
+# ==============================
+# Spring Boot ERP Application Config
+# ==============================
+
+spring:
+  application:
+    name: erp-system
+
+  # --------- Database Configuration ---------
+  datasource:
+    url: jdbc:mysql://localhost:3306/springerp?useSSL=false&serverTimezone=UTC
+    username: root
+    password: ""
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # --------- JPA / Hibernate Configuration ---------
+  jpa:
+    hibernate:
+      ddl-auto: update         # Use 'validate' or 'none' in production
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+
+  # --------- File Upload Limits ---------
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 20MB
+
+  # --------- Profiles ---------
+  profiles:
+    active: dev
+
+# --------- Server Configuration ---------
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+  error:
+    include-message: always
+    include-binding-errors: always
+
+# --------- Logging ---------
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %msg%n"
+
+# --------- Swagger ---------
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+# --------- Custom Application Settings ---------
+erp:
+  file-storage:
+    base-path: uploads/
+  currency: EGP
+
+# --------- Management Endpoints for Health Check ---------
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when-authorized
