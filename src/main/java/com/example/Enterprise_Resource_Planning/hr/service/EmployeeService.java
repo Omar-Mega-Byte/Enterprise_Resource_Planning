@@ -3,11 +3,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.Enterprise_Resource_Planning.hr.model.Department;
 import com.example.Enterprise_Resource_Planning.hr.model.Employee;
 import com.example.Enterprise_Resource_Planning.hr.repository.EmployeeRepository;
 @Service
 public class EmployeeService {
     private final EmployeeRepository employeeRepository;
+
     public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
@@ -45,7 +47,7 @@ public class EmployeeService {
                 .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
     }
 
-    public List<Employee> findByDepartment(String department) {
+    public List<Employee> findByDepartment(Department department) {
         return employeeRepository.findByDepartment(department);
     }
 }

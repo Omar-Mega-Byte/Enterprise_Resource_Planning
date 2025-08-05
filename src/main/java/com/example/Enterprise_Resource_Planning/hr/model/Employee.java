@@ -8,6 +8,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,17 +43,20 @@ public class Employee extends BaseEntity {
     @Column(nullable = false)
     private LocalDate hireDate;
 
-    @Column(nullable = false, length = 100)
-    private String jobTitle;
+    @ManyToOne
+    @JoinColumn(name = "department_id", nullable = false)
+    private Department department;
 
-    @Column(nullable = false, length = 50)
-    private String department;
+    @ManyToOne
+    @JoinColumn(name = "job_title_id", nullable = false)
+    private JobTitle jobTitle;
 
     @Column(precision = 10, scale = 2)
     private BigDecimal salary;
 
     @Column(length = 10)
-    private String status; 
+    @Enumerated(EnumType.STRING)
+    private EmployeeStatus status;
 
     @Column
     private String address;
