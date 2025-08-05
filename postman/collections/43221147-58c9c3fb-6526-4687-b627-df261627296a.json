@@ -262,7 +262,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"title\":\"Frontend Developer\",\r\n    \"description\":\"Our Great Painter\"\r\n}",
+									"raw": "{\r\n    \"title\":\"Ui/Ux\",\r\n    \"description\": \"Our Great Chef\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
