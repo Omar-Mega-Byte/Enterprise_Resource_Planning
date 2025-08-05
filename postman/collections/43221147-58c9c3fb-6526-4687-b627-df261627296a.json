@@ -1,0 +1,505 @@
+{
+	"info": {
+		"_postman_id": "43221147-58c9c3fb-6526-4687-b627-df261627296a",
+		"name": "ERP",
+		"description": "A monolithic Enterprise Resource Planning **(ERP)** system built with **Spring Boot**. Manages core business operations such as **inventory, HR, sales, and finance** in one integrated platform.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "hr",
+			"item": [
+				{
+					"name": "Employee",
+					"item": [
+						{
+							"name": "Add An Employee",
+							"id": "43221147-fe672246-3924-47af-b960-a5d7f73986ef",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"address\": \"56 El Tahrir Street, Giza, Egypt\",\r\n  \"dateOfBirth\": \"1990-11-10\",\r\n  \"department\": \"Human Resources\",\r\n  \"email\": \"sara.naguib@example.com\",\r\n  \"fullName\": \"Sara Naguib\",\r\n  \"gender\": \"FEMALE\",\r\n  \"hireDate\": \"2018-06-01\",\r\n  \"jobTitle\": \"HR Specialist\",\r\n  \"nationalId\": \"29011102300452\",\r\n  \"notes\": \"Strong interpersonal skills\",\r\n  \"phone\": \"+201112223334\",\r\n  \"salary\": 9800.00,\r\n  \"status\": \"ACTIVE\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/employees",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"employees"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch All The Employees",
+							"id": "43221147-4c0771a1-f37d-4e13-bab4-8a8500c29505",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/employees",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"employees"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": null,
+											"type": "text",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get An Employee By Email",
+							"id": "43221147-cc9602c1-1768-41c7-826b-d7dea554d0f1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/employees/email/ahmed.salem@example.com",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"employees",
+										"email",
+										"ahmed.salem@example.com"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get An Employee By Id",
+							"id": "43221147-1c370c58-8c94-4bbd-a14d-7b71c672319f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/employees/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"employees",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit An Employee",
+							"id": "43221147-fa946cfe-63b7-417d-836e-5773cbeba953",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"address\": \"56 El Tahrir Street, Giza, Egypt\",\r\n  \"dateOfBirth\": \"1990-11-10\",\r\n  \"department\": \"Human Resources\",\r\n  \"email\": \"sara.naguib@example.com\",\r\n  \"fullName\": \"Sara Naguib\",\r\n  \"gender\": \"FEMALE\",\r\n  \"hireDate\": \"2018-06-01\",\r\n  \"jobTitle\": \"HR Specialist\",\r\n  \"nationalId\": \"29011102300452\",\r\n  \"notes\": \"Strong interpersonal skills\",\r\n  \"phone\": \"+201112223334\",\r\n  \"salary\": 10000.00,\r\n  \"status\": \"ACTIVE\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/employees/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"employees",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete An Employee",
+							"id": "43221147-dbf38f09-c847-4e7f-b81c-d214e110f8a1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/employees/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"employees",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "43221147-19c2c73d-ba58-4d42-8983-4861e72bd1db"
+				},
+				{
+					"name": "JobTitle",
+					"item": [
+						{
+							"name": "Fetch all the Job Titles",
+							"id": "43221147-c9ec9b8b-19aa-4009-995e-306dbcfa2b2e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/job-titles",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"job-titles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch a Job Titles based on Id",
+							"id": "43221147-ae72a3c1-90e4-4cb1-b69b-8dadc423cef7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/job-titles/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"job-titles",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a job title",
+							"id": "43221147-715c5798-b17b-4ba3-97bb-a5916470778e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"Frontend Developer\",\r\n    \"description\":\"Our Great Painter\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/job-titles",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"job-titles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit a Job Title",
+							"id": "43221147-7c444cfe-8e46-4c10-b391-88738b83fea7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\":\"Frontend Developer\",\r\n    \"description\":\"Our Great Painter\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/job-titles/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"job-titles",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a Job Title",
+							"id": "43221147-276213df-55ec-4544-b226-ba16458a7425",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/job-titles/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"job-titles",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "43221147-9b903a48-1784-41da-9ff0-a3007963eb28"
+				},
+				{
+					"name": "Department",
+					"item": [
+						{
+							"name": "Get All the Departments",
+							"id": "43221147-d3b13eb4-876f-4054-8b06-eeedfd3a8950",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"address\": \"56 El Tahrir Street, Giza, Egypt\",\r\n  \"dateOfBirth\": \"1990-11-10\",\r\n  \"department\": \"Human Resources\",\r\n  \"email\": \"sara.naguib@example.com\",\r\n  \"fullName\": \"Sara Naguib\",\r\n  \"gender\": \"FEMALE\",\r\n  \"hireDate\": \"2018-06-01\",\r\n  \"jobTitle\": \"HR Specialist\",\r\n  \"nationalId\": \"29011102300452\",\r\n  \"notes\": \"Strong interpersonal skills\",\r\n  \"phone\": \"+201112223334\",\r\n  \"salary\": 9800.00,\r\n  \"status\": \"ACTIVE\"\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/departments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"departments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get A Department with Id",
+							"id": "43221147-9d8196d1-b320-4f5e-8dbf-4ff28abb0d22",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/departments/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"departments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create A Department",
+							"id": "43221147-ba659531-42bc-47d0-a62d-38ca64d23c2f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Finance Department\",\r\n    \"location\":\"56 El Tahrir Street, Giza, Egypt\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/departments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"departments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a Department",
+							"id": "43221147-30235a59-949f-46d8-a028-1a498a24394e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"IT Department\",\r\n    \"location\":\"56 El Tahrir Street, Giza, Egypt\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/departments/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"departments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"id": "43221147-bbfa3c7f-9b8d-4e90-b9f2-cc55a1ba8228",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/departments/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"departments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "43221147-4a66cb40-b2e6-4c29-abb4-7387184b2abd"
+				}
+			],
+			"id": "43221147-5009b4c2-52c6-4f4c-adcb-51d65a1fb2ea",
+			"description": "The Hr module to manage the employees"
+		}
+	]
+}
