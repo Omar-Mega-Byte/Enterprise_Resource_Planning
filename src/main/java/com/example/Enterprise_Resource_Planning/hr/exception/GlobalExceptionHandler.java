@@ -52,6 +52,74 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * Handle DepartmentNotFoundException.
+     * Returns 404 NOT FOUND status.
+     */
+    @ExceptionHandler(DepartmentNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleDepartmentNotFoundException(
+            DepartmentNotFoundException ex, WebRequest request) {
+
+        Map<String, Object> errorResponse = createErrorResponse(
+                "DEPARTMENT_NOT_FOUND",
+                ex.getMessage(),
+                HttpStatus.NOT_FOUND,
+                request.getDescription(false));
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
+
+    /**
+     * Handle InvalidDepartmentException.
+     * Returns 400 BAD REQUEST status.
+     */
+    @ExceptionHandler(InvalidDepartmentException.class)
+    public ResponseEntity<Map<String, Object>> handleInvalidDepartmentException(
+            InvalidDepartmentException ex, WebRequest request) {
+
+        Map<String, Object> errorResponse = createErrorResponse(
+                "INVALID_DEPARTMENT",
+                ex.getMessage(),
+                HttpStatus.BAD_REQUEST,
+                request.getDescription(false));
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    /**
+     * Handle EmployeeNotFoundException.
+     * Returns 404 NOT FOUND status.
+     */
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleEmployeeNotFoundException(
+            EmployeeNotFoundException ex, WebRequest request) {
+
+        Map<String, Object> errorResponse = createErrorResponse(
+                "EMPLOYEE_NOT_FOUND",
+                ex.getMessage(),
+                HttpStatus.NOT_FOUND,
+                request.getDescription(false));
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
+
+    /**
+     * Handle InvalidEmployeeException.
+     * Returns 400 BAD REQUEST status.
+     */
+    @ExceptionHandler(InvalidEmployeeException.class)
+    public ResponseEntity<Map<String, Object>> handleInvalidEmployeeException(
+            InvalidEmployeeException ex, WebRequest request) {
+
+        Map<String, Object> errorResponse = createErrorResponse(
+                "INVALID_EMPLOYEE",
+                ex.getMessage(),
+                HttpStatus.BAD_REQUEST,
+                request.getDescription(false));
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    /**
      * Handle all other runtime exceptions.
      * Returns 500 INTERNAL SERVER ERROR status.
      */
