@@ -9,6 +9,7 @@ import com.example.Enterprise_Resource_Planning.hr.exception.DepartmentNotFoundE
 import com.example.Enterprise_Resource_Planning.hr.exception.InvalidDepartmentException;
 import com.example.Enterprise_Resource_Planning.hr.model.Department;
 import com.example.Enterprise_Resource_Planning.hr.repository.DepartmentRepository;
+import com.example.Enterprise_Resource_Planning.hr.validation.DepartmentValidator;
 
 /**
  * Service class for managing Department entities.
@@ -21,26 +22,28 @@ import com.example.Enterprise_Resource_Planning.hr.repository.DepartmentReposito
 public class DepartmentService {
     
     private final DepartmentRepository departmentRepository;
+    private final DepartmentValidator departmentValidator;
 
     /**
      * Constructor for DepartmentService.
      * 
      * @param departmentRepository the department repository
+     * @param departmentValidator the department validator
      */
-    public DepartmentService(DepartmentRepository departmentRepository) {
+    public DepartmentService(DepartmentRepository departmentRepository, DepartmentValidator departmentValidator) {
         this.departmentRepository = departmentRepository;
+        this.departmentValidator = departmentValidator;
     }
+    
     /**
      * Creates a new department.
      * 
      * @param department the department to create
      * @return the created department
-     * @throws InvalidDepartmentException if department is null
+     * @throws InvalidDepartmentException if department validation fails
      */
     public Department createDepartment(Department department) {
-        if (department == null) {
-            throw new InvalidDepartmentException("Department cannot be null");
-        }
+        departmentValidator.validateDepartmentForCreation(department);
         return departmentRepository.save(department);
     }
 
@@ -64,9 +67,7 @@ public class DepartmentService {
      */
     @Transactional(readOnly = true)
     public Department findById(Long id) {
-        if (id == null) {
-            throw new InvalidDepartmentException("Department ID cannot be null");
-        }
+        departmentValidator.validateDepartmentId(id);
         return departmentRepository.findById(id)
             .orElseThrow(() -> new DepartmentNotFoundException("Department not found with id: " + id));
     }
@@ -79,9 +80,7 @@ public class DepartmentService {
      * @throws DepartmentNotFoundException if department doesn't exist
      */
     public void deleteDepartment(Long id) {
-        if (id == null) {
-            throw new InvalidDepartmentException("Department ID cannot be null");
-        }
+        departmentValidator.validateDepartmentId(id);
         
         if (!departmentRepository.existsById(id)) {
             throw new DepartmentNotFoundException("Department with id " + id + " does not exist");
@@ -100,12 +99,8 @@ public class DepartmentService {
      * @throws DepartmentNotFoundException if department doesn't exist
      */
     public Department updateDepartment(Long id, Department department) {
-        if (id == null) {
-            throw new InvalidDepartmentException("Department ID cannot be null");
-        }
-        if (department == null) {
-            throw new InvalidDepartmentException("Department cannot be null");
-        }
+        departmentValidator.validateDepartmentId(id);
+        departmentValidator.validateDepartmentForUpdate(department);
         
         return departmentRepository.findById(id)
                 .map(existingDepartment -> {

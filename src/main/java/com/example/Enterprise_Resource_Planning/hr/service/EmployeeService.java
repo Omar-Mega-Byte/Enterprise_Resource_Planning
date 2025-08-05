@@ -10,6 +10,7 @@ import com.example.Enterprise_Resource_Planning.hr.exception.InvalidEmployeeExce
 import com.example.Enterprise_Resource_Planning.hr.model.Department;
 import com.example.Enterprise_Resource_Planning.hr.model.Employee;
 import com.example.Enterprise_Resource_Planning.hr.repository.EmployeeRepository;
+import com.example.Enterprise_Resource_Planning.hr.validation.EmployeeValidator;
 
 /**
  * Service class for managing Employee entities.
@@ -22,14 +23,17 @@ import com.example.Enterprise_Resource_Planning.hr.repository.EmployeeRepository
 public class EmployeeService {
     
     private final EmployeeRepository employeeRepository;
+    private final EmployeeValidator employeeValidator;
 
     /**
      * Constructor for EmployeeService.
      * 
      * @param employeeRepository the employee repository
+     * @param employeeValidator the employee validator
      */
-    public EmployeeService(EmployeeRepository employeeRepository) {
+    public EmployeeService(EmployeeRepository employeeRepository, EmployeeValidator employeeValidator) {
         this.employeeRepository = employeeRepository;
+        this.employeeValidator = employeeValidator;
     }
 
     /**
@@ -37,12 +41,10 @@ public class EmployeeService {
      * 
      * @param employee the employee to create
      * @return the created employee
-     * @throws InvalidEmployeeException if employee is null
+     * @throws InvalidEmployeeException if employee validation fails
      */
     public Employee createEmployee(Employee employee) {
-        if (employee == null) {
-            throw new InvalidEmployeeException("Employee cannot be null");
-        }
+        employeeValidator.validateEmployee(employee);
         return employeeRepository.save(employee);
     }
 
@@ -66,9 +68,7 @@ public class EmployeeService {
      */
     @Transactional(readOnly = true)
     public Employee findById(Long id) {
-        if (id == null) {
-            throw new InvalidEmployeeException("Employee ID cannot be null");
-        }
+        employeeValidator.validateEmployeeId(id);
         return employeeRepository.findById(id)
             .orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id: " + id));
     }
@@ -83,9 +83,7 @@ public class EmployeeService {
      */
     @Transactional(readOnly = true)
     public Employee findByEmail(String email) {
-        if (email == null || email.trim().isEmpty()) {
-            throw new InvalidEmployeeException("Employee email cannot be null or empty");
-        }
+        employeeValidator.validateEmail(email);
         return employeeRepository.findByEmail(email)
             .orElseThrow(() -> new EmployeeNotFoundException("Employee not found with email: " + email));
     }
@@ -115,12 +113,8 @@ public class EmployeeService {
      * @throws EmployeeNotFoundException if employee doesn't exist
      */
     public Employee updateEmployee(Long id, Employee employee) {
-        if (id == null) {
-            throw new InvalidEmployeeException("Employee ID cannot be null");
-        }
-        if (employee == null) {
-            throw new InvalidEmployeeException("Employee cannot be null");
-        }
+        employeeValidator.validateEmployeeId(id);
+        employeeValidator.validateEmployee(employee);
         
         return employeeRepository.findById(id)
                 .map(existingEmployee -> {
@@ -139,9 +133,7 @@ public class EmployeeService {
      * @throws EmployeeNotFoundException if employee doesn't exist
      */
     public Boolean deleteById(Long id) {
-        if (id == null) {
-            throw new InvalidEmployeeException("Employee ID cannot be null");
-        }
+        employeeValidator.validateEmployeeId(id);
         
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id: " + id));

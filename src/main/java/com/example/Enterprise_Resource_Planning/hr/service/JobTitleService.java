@@ -1,21 +1,26 @@
 package com.example.Enterprise_Resource_Planning.hr.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.example.Enterprise_Resource_Planning.hr.repository.JobTitleRepository;
-import com.example.Enterprise_Resource_Planning.hr.model.JobTitle;
-import com.example.Enterprise_Resource_Planning.hr.exception.JobTitleNotFoundException;
+
 import com.example.Enterprise_Resource_Planning.hr.exception.InvalidJobTitleException;
-import java.util.List;
+import com.example.Enterprise_Resource_Planning.hr.exception.JobTitleNotFoundException;
+import com.example.Enterprise_Resource_Planning.hr.model.JobTitle;
+import com.example.Enterprise_Resource_Planning.hr.repository.JobTitleRepository;
+import com.example.Enterprise_Resource_Planning.hr.validation.JobTitleValidator;
 
 @Service
 @Transactional
 public class JobTitleService {
 
     private final JobTitleRepository jobTitleRepository;
+    private final JobTitleValidator jobTitleValidator;
 
-    public JobTitleService(JobTitleRepository jobTitleRepository) {
+    public JobTitleService(JobTitleRepository jobTitleRepository, JobTitleValidator jobTitleValidator) {
         this.jobTitleRepository = jobTitleRepository;
+        this.jobTitleValidator = jobTitleValidator;
     }
 
     /**
@@ -38,9 +43,7 @@ public class JobTitleService {
      */
     @Transactional(readOnly = true)
     public JobTitle findById(Long id) {
-        if (id == null) {
-            throw new InvalidJobTitleException("Job title ID cannot be null");
-        }
+        jobTitleValidator.validateJobTitleId(id);
         return jobTitleRepository.findById(id)
                 .orElseThrow(() -> new JobTitleNotFoundException("Job title not found with id: " + id));
     }
@@ -50,12 +53,10 @@ public class JobTitleService {
      * 
      * @param jobTitle the job title to create
      * @return the created job title
-     * @throws InvalidJobTitleException if jobTitle is null
+     * @throws InvalidJobTitleException if jobTitle validation fails
      */
     public JobTitle createJobTitle(JobTitle jobTitle) {
-        if (jobTitle == null) {
-            throw new InvalidJobTitleException("Job title cannot be null");
-        }
+        jobTitleValidator.validateJobTitleForCreation(jobTitle);
         return jobTitleRepository.save(jobTitle);
     }
 
@@ -69,12 +70,8 @@ public class JobTitleService {
      * @throws JobTitleNotFoundException if job title doesn't exist
      */
     public JobTitle updateJobTitle(Long id, JobTitle jobTitle) {
-        if (id == null) {
-            throw new InvalidJobTitleException("Job title ID cannot be null");
-        }
-        if (jobTitle == null) {
-            throw new InvalidJobTitleException("Job title cannot be null");
-        }
+        jobTitleValidator.validateJobTitleId(id);
+        jobTitleValidator.validateJobTitleForUpdate(jobTitle);
 
         return jobTitleRepository.findById(id)
                 .map(existingJobTitle -> {
@@ -92,9 +89,7 @@ public class JobTitleService {
      * @throws JobTitleNotFoundException if job title doesn't exist
      */
     public void deleteJobTitle(Long id) {
-        if (id == null) {
-            throw new InvalidJobTitleException("Job title ID cannot be null");
-        }
+        jobTitleValidator.validateJobTitleId(id);
 
         if (!jobTitleRepository.existsById(id)) {
             throw new JobTitleNotFoundException("Job title with id " + id + " does not exist");
