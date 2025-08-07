@@ -576,7 +576,7 @@
 							"response": []
 						},
 						{
-							"name": "New Request",
+							"name": "Updating a product",
 							"id": "43221147-2fe7402b-d4f7-4625-81d9-a80cda670764",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
