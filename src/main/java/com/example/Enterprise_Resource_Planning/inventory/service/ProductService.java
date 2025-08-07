@@ -309,26 +309,14 @@ public class ProductService {
         
         return products.stream()
                 .sorted((p1, p2) -> {
-                    int result = 0;
-                    switch (sortBy) {
-                        case "name":
-                            result = p1.getName().compareToIgnoreCase(p2.getName());
-                            break;
-                        case "sku":
-                            result = p1.getSku().compareToIgnoreCase(p2.getSku());
-                            break;
-                        case "unitprice":
-                            result = p1.getUnitPrice().compareTo(p2.getUnitPrice());
-                            break;
-                        case "quantityinstock":
-                            result = p1.getQuantityInStock().compareTo(p2.getQuantityInStock());
-                            break;
-                        case "createdat":
-                            result = p1.getCreatedAt().compareTo(p2.getCreatedAt());
-                            break;
-                        default:
-                            result = p1.getName().compareToIgnoreCase(p2.getName());
-                    }
+                    int result = switch (sortBy) {
+                        case "name" -> p1.getName().compareToIgnoreCase(p2.getName());
+                        case "sku" -> p1.getSku().compareToIgnoreCase(p2.getSku());
+                        case "unitprice" -> p1.getUnitPrice().compareTo(p2.getUnitPrice());
+                        case "quantityinstock" -> p1.getQuantityInStock().compareTo(p2.getQuantityInStock());
+                        case "createdat" -> p1.getCreatedAt().compareTo(p2.getCreatedAt());
+                        default -> p1.getName().compareToIgnoreCase(p2.getName());
+                    };
                     return ascending ? result : -result;
                 })
                 .toList();
