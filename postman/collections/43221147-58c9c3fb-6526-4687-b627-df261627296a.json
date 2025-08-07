@@ -518,7 +518,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"sku\": \"KSTN-DDR5-32GB-6000\",\r\n  \"name\": \"Kingston Fury Beast 32GB DDR5\",\r\n  \"description\": \"32GB (2x16GB) DDR5 6000MHz CL40 Desktop RAM\",\r\n  \"unitPrice\": 139.99,\r\n  \"quantityInStock\": 500,\r\n  \"category\": \"Memory & Storage\",\r\n  \"supplier\": \"Kingston Technology\",\r\n  \"weightKg\": 0.065,\r\n  \"minimumStockLevel\": 100,\r\n  \"reorderPoint\": 50,\r\n  \"stockLevelsValid\": true\r\n}\r\n",
+									"raw": "{\r\n  \"sku\": \"15IC8XLWZM81-LBZK45Q3VQ7\",\r\n  \"name\": \"Dell XPS 15 Laptop\",\r\n  \"description\": \"15.6-inch UHD+ Touchscreen, Intel Core i7-13700H, 32GB RAM, 1TB SSD, NVIDIA RTX 4050\",\r\n  \"unitPrice\": 2399.99,\r\n  \"quantityInStock\": 125,\r\n  \"category\": \"Laptops\",\r\n  \"supplier\": \"Dell Technologies\",\r\n  \"weightKg\": 2.05,\r\n  \"minimumStockLevel\": 10,\r\n  \"reorderPoint\": 5,\r\n  \"stockLevelsValid\": true\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -641,14 +641,37 @@
 							"response": []
 						},
 						{
-							"name": "New Request",
+							"name": "Search for a product",
 							"id": "43221147-baab8242-0c25-49c5-a4b7-4c8855e13337",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "GET",
-								"header": []
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n  \"minQuantity\": 200\r\n\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/inventory/products/search",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"inventory",
+										"products",
+										"search"
+									]
+								}
 							},
 							"response": []
 						}
