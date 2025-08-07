@@ -542,13 +542,13 @@
 							"response": []
 						},
 						{
-							"name": "Add a new product Copy",
+							"name": "Get a product",
 							"id": "43221147-b708d620-5c68-4fb0-9532-f91398438976",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "POST",
+								"method": "GET",
 								"header": [],
 								"body": {
 									"mode": "raw",
