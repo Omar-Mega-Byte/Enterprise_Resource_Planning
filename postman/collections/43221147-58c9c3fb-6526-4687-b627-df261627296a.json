@@ -508,7 +508,7 @@
 					"name": "product",
 					"item": [
 						{
-							"name": "Get a product",
+							"name": "Get all products",
 							"id": "43221147-b708d620-5c68-4fb0-9532-f91398438976",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
