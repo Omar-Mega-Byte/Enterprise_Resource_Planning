@@ -450,8 +450,95 @@ public class ProductValidator {
      */
     public void validateForDeletion(Long productId) {
         validateProductId(productId);
+    }
+
+    
+    /**
+     * Validates ProductCreateDTO for creation.
+     * 
+     * @param productCreateDTO the DTO to validate for creation
+     * @throws InvalidProductDataException if validation fails
+     */
+    public void validateProductForCreation(com.example.Enterprise_Resource_Planning.inventory.dto.request.ProductCreateDTO productCreateDTO) {
+        if (productCreateDTO == null) {
+            throw new InvalidProductDataException("Product creation data cannot be null");
+        }
         
-        // Additional business rules for deletion can be added here
-        // For example: check if product has pending orders, transactions, etc.
+        // Validate individual fields using existing methods
+        validateSku(productCreateDTO.getSku());
+        validateName(productCreateDTO.getName());
+        validateDescription(productCreateDTO.getDescription());
+        validateUnitPrice(productCreateDTO.getUnitPrice());
+        validateQuantityInStock(productCreateDTO.getQuantityInStock());
+        validateCategory(productCreateDTO.getCategory());
+        validateSupplier(productCreateDTO.getSupplier());
+        validateWeight(productCreateDTO.getWeightKg());
+        validateStockLevels(productCreateDTO.getMinimumStockLevel(), productCreateDTO.getReorderPoint());
+        
+        // Check SKU uniqueness
+        validateSkuUniqueness(productCreateDTO.getSku());
+        
+        // Validate stock level relationships
+        if (productCreateDTO.getMinimumStockLevel() != null && 
+            productCreateDTO.getReorderPoint() != null &&
+            productCreateDTO.getReorderPoint() > productCreateDTO.getMinimumStockLevel()) {
+            throw new InvalidProductDataException("Reorder point should not exceed minimum stock level");
+        }
+    }
+
+    /**
+     * Validates ProductUpdateDTO for update operations.
+     * 
+     * @param productUpdateDTO the DTO to validate for update
+     * @param productId the ID of the product being updated
+     * @throws InvalidProductDataException if validation fails
+     */
+    public void validateProductForUpdate(com.example.Enterprise_Resource_Planning.inventory.dto.request.ProductUpdateDTO productUpdateDTO, Long productId) {
+        if (productUpdateDTO == null) {
+            throw new InvalidProductDataException("Product update data cannot be null");
+        }
+        
+        validateProductId(productId);
+        
+        // Validate only provided fields (since it's a partial update)
+        if (productUpdateDTO.getSku() != null) {
+            validateSkuUniquenessForUpdate(productUpdateDTO.getSku(), productId);
+        }
+        
+        if (productUpdateDTO.getName() != null) {
+            validateName(productUpdateDTO.getName());
+        }
+        
+        if (productUpdateDTO.getDescription() != null) {
+            validateDescription(productUpdateDTO.getDescription());
+        }
+        
+        if (productUpdateDTO.getUnitPrice() != null) {
+            validateUnitPrice(productUpdateDTO.getUnitPrice());
+        }
+        
+        if (productUpdateDTO.getStatus() != null) {
+            validateStatus(productUpdateDTO.getStatus());
+        }
+        
+        if (productUpdateDTO.getQuantityInStock() != null) {
+            validateQuantityInStock(productUpdateDTO.getQuantityInStock());
+        }
+        
+        if (productUpdateDTO.getCategory() != null) {
+            validateCategory(productUpdateDTO.getCategory());
+        }
+        
+        if (productUpdateDTO.getSupplier() != null) {
+            validateSupplier(productUpdateDTO.getSupplier());
+        }
+        
+        if (productUpdateDTO.getWeightKg() != null) {
+            validateWeight(productUpdateDTO.getWeightKg());
+        }
+        
+        if (productUpdateDTO.getMinimumStockLevel() != null || productUpdateDTO.getReorderPoint() != null) {
+            validateStockLevels(productUpdateDTO.getMinimumStockLevel(), productUpdateDTO.getReorderPoint());
+        }
     }
 }
