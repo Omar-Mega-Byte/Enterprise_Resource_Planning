@@ -508,40 +508,6 @@
 					"name": "product",
 					"item": [
 						{
-							"name": "Add a new product",
-							"id": "43221147-fc0f7153-2a66-4105-a6e6-f9db2b9cb580",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"sku\": \"15IC8XLWZM81-LBZK45Q3VQ7\",\r\n  \"name\": \"Dell XPS 15 Laptop\",\r\n  \"description\": \"15.6-inch UHD+ Touchscreen, Intel Core i7-13700H, 32GB RAM, 1TB SSD, NVIDIA RTX 4050\",\r\n  \"unitPrice\": 2399.99,\r\n  \"quantityInStock\": 125,\r\n  \"category\": \"Laptops\",\r\n  \"supplier\": \"Dell Technologies\",\r\n  \"weightKg\": 2.05,\r\n  \"minimumStockLevel\": 10,\r\n  \"reorderPoint\": 5,\r\n  \"stockLevelsValid\": true\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:8080/api/inventory/products",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "8080",
-									"path": [
-										"api",
-										"inventory",
-										"products"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Get a product",
 							"id": "43221147-b708d620-5c68-4fb0-9532-f91398438976",
 							"protocolProfileBehavior": {
@@ -635,6 +601,40 @@
 										"inventory",
 										"products",
 										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add a new product",
+							"id": "43221147-fc0f7153-2a66-4105-a6e6-f9db2b9cb580",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"sku\": \"15IC8XLWZM81-LBZK45Q3VQ7\",\r\n  \"name\": \"Dell XPS 15 Laptop\",\r\n  \"description\": \"15.6-inch UHD+ Touchscreen, Intel Core i7-13700H, 32GB RAM, 1TB SSD, NVIDIA RTX 4050\",\r\n  \"unitPrice\": 2399.99,\r\n  \"quantityInStock\": 125,\r\n  \"category\": \"Laptops\",\r\n  \"supplier\": \"Dell Technologies\",\r\n  \"weightKg\": 2.05,\r\n  \"minimumStockLevel\": 10,\r\n  \"reorderPoint\": 5,\r\n  \"stockLevelsValid\": true\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/inventory/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"inventory",
+										"products"
 									]
 								}
 							},
