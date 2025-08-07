@@ -542,6 +542,40 @@
 							"response": []
 						},
 						{
+							"name": "Get all products Copy",
+							"id": "43221147-ad87ccf1-8a8e-4082-baf0-8a989b926e53",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"sku\": \"KSTN-DDR5-32GB-6000\",\r\n  \"name\": \"Kingston Fury Beast 32GB DDR5\",\r\n  \"description\": \"32GB (2x16GB) DDR5 6000MHz CL40 Desktop RAM\",\r\n  \"unitPrice\": 139.99,\r\n  \"quantityInStock\": 500,\r\n  \"category\": \"Memory & Storage\",\r\n  \"supplier\": \"Kingston Technology\",\r\n  \"weightKg\": 0.065,\r\n  \"minimumStockLevel\": 100,\r\n  \"reorderPoint\": 50,\r\n  \"stockLevelsValid\": true\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/inventory/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"inventory",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Updating a product",
 							"id": "43221147-2fe7402b-d4f7-4625-81d9-a80cda670764",
 							"protocolProfileBehavior": {
