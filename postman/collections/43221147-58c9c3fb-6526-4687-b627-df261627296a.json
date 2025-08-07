@@ -506,11 +506,24 @@
 			"item": [
 				{
 					"name": "product",
-					"item": [],
+					"item": [
+						{
+							"name": "New Request",
+							"id": "43221147-fc0f7153-2a66-4105-a6e6-f9db2b9cb580",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
 					"id": "43221147-7f054b7c-d43b-4c50-9c28-fe8d5dd376f8"
 				},
 				{
-					"name": "New Folder",
+					"name": "productDashboard",
 					"item": [],
 					"id": "43221147-d1568d44-8ec4-4789-a4f0-2d9364718375"
 				}
