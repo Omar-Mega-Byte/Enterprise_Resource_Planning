@@ -617,8 +617,26 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"method": "GET",
-								"header": []
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"unitPrice\": 200.42\r\n}\r\n"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/inventory/products/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"inventory",
+										"products",
+										"1"
+									]
+								}
 							},
 							"response": []
 						}
