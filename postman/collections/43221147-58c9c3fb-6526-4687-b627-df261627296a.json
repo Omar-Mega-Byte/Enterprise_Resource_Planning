@@ -611,7 +611,7 @@
 							"response": []
 						},
 						{
-							"name": "New Request",
+							"name": "Delete a product",
 							"id": "43221147-055549fe-c95a-4133-a43d-39ded1e44402",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
