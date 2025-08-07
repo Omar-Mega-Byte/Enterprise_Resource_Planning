@@ -10,6 +10,7 @@ public enum ProductStatus {
     PENDING_RESTOCK("Pending Restock"),
     PRE_ORDER("Pre-Order"),
     BACK_ORDER("Back Order"),
+    ACTIVE("Active"),
     INACTIVE("Inactive"),
     DRAFT("Draft");
     
