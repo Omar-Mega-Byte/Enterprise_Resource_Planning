@@ -23,7 +23,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"address\": \"56 El Tahrir Street, Giza, Egypt\",\r\n  \"dateOfBirth\": \"1990-11-10\",\r\n  \"department\": \"Human Resources\",\r\n  \"email\": \"sara.naguib@example.com\",\r\n  \"fullName\": \"Sara Naguib\",\r\n  \"gender\": \"FEMALE\",\r\n  \"hireDate\": \"2018-06-01\",\r\n  \"jobTitle\": \"HR Specialist\",\r\n  \"nationalId\": \"29011102300452\",\r\n  \"notes\": \"Strong interpersonal skills\",\r\n  \"phone\": \"+201112223334\",\r\n  \"salary\": 9800.00,\r\n  \"status\": \"ACTIVE\"\r\n}\r\n",
+									"raw": "{\r\n  \"fullName\": \"John Doe\",\r\n  \"nationalId\": \"123-456-789\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"phone\": \"555-1234\",\r\n  \"gender\": \"MALE\",\r\n  \"dateOfBirth\": \"1990-05-15\",\r\n  \"hireDate\": \"2020-01-15\",\r\n  \"department\": {\r\n    \"id\": \"2\",\r\n    \"name\": \"Finance Department\"\r\n  },\r\n  \"jobTitle\": {\r\n    \"id\": \"1\",\r\n    \"title\": \"Backend Developer\"\r\n  },\r\n  \"salary\": 85000,\r\n  \"status\": \"ACTIVE\",\r\n  \"address\": \"123 Main St, Anytown, USA\",\r\n  \"notes\": \"A valued member of the team.\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -413,7 +413,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"name\":\"Finance Department\",\r\n    \"location\":\"56 El Tahrir Street, Giza, Egypt\"\r\n}",
+									"raw": "{\r\n    \"name\":\"Arts Department\",\r\n    \"location\":\"56 El Tahrir Street, Giza, Egypt\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -508,7 +508,7 @@
 					"name": "product",
 					"item": [
 						{
-							"name": "New Request",
+							"name": "Add a new product",
 							"id": "43221147-fc0f7153-2a66-4105-a6e6-f9db2b9cb580",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -518,7 +518,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"sku\": \"15IC8XLWZM81-LBZK45Q3VQ7\",\r\n  \"name\": \"Dell XPS 15 Laptop\",\r\n  \"description\": \"15.6-inch UHD+ Touchscreen, Intel Core i7-13700H, 32GB RAM, 1TB SSD, NVIDIA RTX 4050\",\r\n  \"unitPrice\": 2399.99,\r\n  \"quantityInStock\": 125,\r\n  \"category\": \"Laptops\",\r\n  \"supplier\": \"Dell Technologies\",\r\n  \"weightKg\": 2.05,\r\n  \"minimumStockLevel\": 10,\r\n  \"reorderPoint\": 20,\r\n  \"stockLevelsValid\": true\r\n}\r\n",
+									"raw": "{\r\n  \"sku\": \"KSTN-DDR5-32GB-6000\",\r\n  \"name\": \"Kingston Fury Beast 32GB DDR5\",\r\n  \"description\": \"32GB (2x16GB) DDR5 6000MHz CL40 Desktop RAM\",\r\n  \"unitPrice\": 139.99,\r\n  \"quantityInStock\": 500,\r\n  \"category\": \"Memory & Storage\",\r\n  \"supplier\": \"Kingston Technology\",\r\n  \"weightKg\": 0.065,\r\n  \"minimumStockLevel\": 100,\r\n  \"reorderPoint\": 50,\r\n  \"stockLevelsValid\": true\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
