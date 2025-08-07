@@ -542,7 +542,7 @@
 							"response": []
 						},
 						{
-							"name": "Get all products Copy",
+							"name": "Get a product",
 							"id": "43221147-ad87ccf1-8a8e-4082-baf0-8a989b926e53",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
@@ -560,7 +560,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/inventory/products",
+									"raw": "http://localhost:8080/api/inventory/products/5",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -569,7 +569,8 @@
 									"path": [
 										"api",
 										"inventory",
-										"products"
+										"products",
+										"5"
 									]
 								}
 							},
